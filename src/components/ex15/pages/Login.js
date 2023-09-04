@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "../Components/ErrorMessage";
+import { userData } from "../userData";
+import { useNavigate } from "react-router-dom";
 
 const Wrap = styled.div`
   display: flex;
@@ -50,14 +52,46 @@ const Button = styled.button`
 `;
 
 export const Login = () => {
+  const nav = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    setError,
   } = useForm();
 
-  const onSubmit = () => {
-    console.log("로그인 버튼 클릭함!");
+  const onSubmit = (data) => {
+    // console.log(data.username);
+    // 아이디 불러올 때
+
+    // console.log(data.password);
+    // 비밀번호 불러올 때
+
+    // console.log("로그인 버튼 클릭함!");
+
+    // const inputUsername = data.username;
+    // const inputPassword = data.password;
+
+    const { username, password } = data;
+    // => user가 input에 입력한 value값을 비구조화 할당으로 표현
+    // console.log(username, password);
+
+    if (username !== userData.username) {
+      setError("username", {
+        message: "아이디가 틀렸습니다.",
+      });
+    }
+
+    if (password !== userData.password) {
+      setError("password", {
+        message: "비밀번호가 틀렸습니다.",
+      });
+    }
+
+    // 로그인 성공시 메인 페이지로 이동
+    nav("/");
+    // => 경로를 지정하여, 페이지를 이동 시킬 수 있음
   };
 
   // console.log(errors.username.message);
