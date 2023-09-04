@@ -7,6 +7,7 @@ export const Home = () => {
 
       <Link to={"/"}>Home</Link>
       <Link to={"/login"}>Login</Link>
+      <Link to={"/Signup"}>Signup</Link>
     </div>
   );
 };

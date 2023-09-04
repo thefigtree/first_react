@@ -3,5 +3,7 @@
 export const userData = {
   id: 0,
   username: "test",
+  email: "ldj8431@naver.com",
+  name: "이동진",
   password: "test123123",
 };
